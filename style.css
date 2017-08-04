@@ -34,10 +34,16 @@ body,html {
   font-family: sans-serif;
 }
 
-.keys {
+.keys2 {
   display:flex;
   flex:1;
-  min-height:100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.keys3 {
+  display:flex;
+  flex:0;
   align-items: center;
   justify-content: center;
 }
