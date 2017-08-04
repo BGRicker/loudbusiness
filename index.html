@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <link rel="stylesheet" href="style.css">
+
+  <body>
+    <div class="keys">
+      <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">Alright</span>
+      </div>
+      <div data-key="83" class="key">
+        <kbd>S</kbd>
+        <span class="sound">S'ya boy</span>
+      </div>
+      <div data-key="68" class="key">
+        <kbd>D</kbd>
+        <span class="sound">Damn!</span>
+      </div>
+      <div data-key="70" class="key">
+        <kbd>F</kbd>
+        <span class="sound">Focused</span>
+      </div>
+      <div data-key="71" class="key">
+        <kbd>G</kbd>
+        <span class="sound">Ghost</span>
+      </div>
+      <div data-key="72" class="key">
+        <kbd>H</kbd>
+        <span class="sound">Hahaaaa</span>
+      </div>
+      <div data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">J'yeah!</span>
+      </div>
+      <div data-key="75" class="key">
+        <kbd>K</kbd>
+        <span class="sound">Killa</span>
+      </div>
+      <div data-key="76" class="key">
+        <kbd>L</kbd>
+        <span class="sound">Love</span>
+      </div>
+    </div>
+
+
+    <audio data-key="65" src="sounds/drake_alright.ogg"></audio>
+    <audio data-key="83" src="sounds/jayz_itsyoboy.ogg"></audio>
+    <audio data-key="68" src="sounds/weezy_damn.ogg"></audio>
+    <audio data-key="70" src="sounds/jayz_focused.ogg"></audio>
+    <audio data-key="71" src="sounds/e40_ghostride.ogg"></audio>
+    <audio data-key="72" src="sounds/jeezy_haha.ogg"></audio>
+    <audio data-key="74" src="sounds/jayz_chyeah.ogg"></audio>
+    <audio data-key="75" src="sounds/camron_killah.ogg"></audio>
+    <audio data-key="76" src="sounds/trick_love_kids.ogg"></audio>
+
+    <script>
+
+      function playSound(e) { 
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if(!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        key.classList.add('playing');
+      }
+
+      function removeTransition(e) {
+        if(e.propertyName !== 'transform') return;
+        this.classList.remove('playing');
+      }
+
+      const keys = document.querySelectorAll('.key');
+      keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+      window.addEventListener('keydown', playSound);
+
+    </script>
+  </body>
+</html>
+
+
