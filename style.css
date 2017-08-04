@@ -34,6 +34,13 @@ body,html {
   font-family: sans-serif;
 }
 
+.keys1 {
+  display:flex;
+  flex:1;
+  align-items: center;
+  justify-content: center;
+}
+
 .keys2 {
   display:flex;
   flex:1;
